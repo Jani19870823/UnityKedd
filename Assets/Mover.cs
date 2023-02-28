@@ -7,6 +7,7 @@ public class Mover : MonoBehaviour
     [SerializeField] float angularVelocity = 20;
 
     [SerializeField] bool moveInCameraSpace;
+    [SerializeField] HealthObject healthObject;
     /*void Start()
     {
         Vector2 v2a = new Vector2(1, 4);
@@ -20,8 +21,22 @@ public class Mover : MonoBehaviour
         t.position= v3a;
     }
     */
+
+     void OnValidate()
+    {
+        if(healthObject == null)
+            healthObject = gameObject.GetComponent<HealthObject>();
+    }
     void Update()
     {
+   /* if (healthObject != null)
+        {
+            if (!healthObject.IsAlive()) return; //ez és a lenti ugyanaz
+        }*/
+
+        if(healthObject != null && !healthObject.IsAlive()) return; // ez és a fenti ugyanaz
+
+
         bool up = Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W);
         bool down = Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S);
         bool right = Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
