@@ -37,7 +37,7 @@ public class PathMover : MonoBehaviour
     }
     private void OnValidate()
     {
-        transform.position = Vector3.Lerp(posA.position, posB.position, startPosition);  //súlyozott átlag a Lerp
+        transform.position = Vector3.Lerp(posA.position, posB.position, startPosition);  //súlyozott átlag a Lerp (Lineáris interpoláció)
     }
     void OnDrawGizmos()
     {
